@@ -1,3 +1,5 @@
+require 'csv'
+
 class User
   attr_reader :name
 
@@ -20,5 +22,11 @@ class User
 
   def perform_routine_for(user)
     jokes.map {|joke| user.jokes << joke}
+  end
+
+  def learn_routine(routine)
+    CSV.foreach routine, headers: true, header_converters: :symbol do |row|
+      jokes << row
+    end
   end
 end
