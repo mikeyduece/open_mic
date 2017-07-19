@@ -66,4 +66,14 @@ class UserTest < Minitest::Test
     assert_equal 100, casey.jokes.count
     assert_instance_of Joke, casey.jokes.first
   end
+
+  def test_user_can_tell_new_jokes
+    casey = User.new("Casey")
+    sal = User.new("Sal")
+    casey.learn_routine('./jokes.csv')
+    joke = casey.jokes[34]
+    casey.tell(sal, joke)
+    assert_equal 1, sal.jokes.count
+    assert_instance_of Joke, sal.jokes[0]
+  end
 end
