@@ -1,6 +1,8 @@
 require 'csv'
 require './lib/joke'
+
 class User
+
   attr_reader :name, :jokes
 
   def initialize(name)
