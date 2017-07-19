@@ -5,7 +5,7 @@ class User
 
   def initialize(name)
     @name = name
-    @jokes = [].flatten
+    @jokes = []
   end
 
   def jokes
