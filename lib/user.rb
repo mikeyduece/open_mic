@@ -1,5 +1,5 @@
 require 'csv'
-
+require './lib/joke'
 class User
   attr_reader :name, :jokes
 
@@ -22,7 +22,7 @@ class User
 
   def learn_routine(routine)
     CSV.foreach routine, headers: true, header_converters: :symbol do |row|
-      jokes << row
+      jokes << Joke.new(row)
     end
   end
 end
